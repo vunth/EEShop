@@ -10,6 +10,9 @@ const instructions = Platform.select({
   
   
 class Authentication extends React.Component {
+    static navigationOptions = {
+        title: 'Authentication Screen',
+    };
     render() {
       return (
         <View style={styles.container}>

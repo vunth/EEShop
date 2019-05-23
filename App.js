@@ -1,4 +1,3 @@
-/* eslint-disable import/newline-after-import */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -7,9 +6,10 @@
  * @flow
  */
 
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+// import React from 'react';
+import { StyleSheet, StatusBar } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+
 // import Home from './components/Home/Home';
 // import Authentication from './components/Authentication/Authentication';
 // import ChangeInformation from './components/ChangeInformation/ChangeInformation';
@@ -26,27 +26,36 @@ StatusBar.setHidden(true);
 
 // type Props = {};
 
-// export default class App extends Component<Props> {
-//   render() {
-//     return (
-//       <NavigationExperimental.Navigator
-//         initialRoute={{ name: 'HOME' }}
-//         renderScene={(route, navigator) => {
-//           switch (route.name) {
-//             case 'HOME': return <Home />;
-//             case 'CHANGE_INFORMATION': return <ChangeInformation />;
-//             case 'AUTHENTICATION': return <Authentication />;
-//             default: return <OrderHistory />;
-//           }
-//         }}
-//       />
-//     );
-//   }
-// }
 const Home = require('./components/Home/Home');
-const MainNavigator = createStackNavigator({
-  Home: { screen: Home }
-});
+const Authentication = require('./components/Authentication/Authentication');
+
+const MainNavigator = createStackNavigator(
+  {
+    Home: { screen: Home },
+    Authentication: { screen: Authentication }
+  }, 
+  // {
+  //   navigationOptions: () => ({
+  //     gestureDirection: 'inverted',
+  //   }),
+  //   transitionConfig: () => ({
+  //     screenInterpolator: sceneProps => {
+  //       const { layout, position, scene } = sceneProps;
+  //       const { index } = scene;
+  //       const width = layout.initWidth;
+  
+  //       return {
+  //         transform: [{
+  //           translateX: position.interpolate({
+  //             inputRange: [index - 1, index, index + 1],
+  //             outputRange: [-width, 0, width],
+  //           }),
+  //         }]
+  //       };
+  //     },
+  //   })
+  // }
+);
 
 export default createAppContainer(MainNavigator);
 

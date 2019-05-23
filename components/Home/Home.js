@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Platform, Text, View } from 'react-native';
+import { StyleSheet, Platform, Text, View, Button } from 'react-native';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -10,12 +10,20 @@ const instructions = Platform.select({
   
   
 class Home extends React.Component {
+    static navigationOptions = {
+        title: 'Home Screen',
+    };
     render() {
+        const { navigate } = this.props.navigation;
         return (
         <View style={styles.container}>
             <Text style={styles.welcome}>Welcome to Home component!</Text>
             <Text style={styles.instructions}>To get started, edit App.js</Text>
             <Text style={styles.instructions}>{instructions}</Text>
+            <Button
+                title="Go to Authentication Screen"
+                onPress={() => navigate('Authentication', { name: 'Hoang Vu' })}
+            />
         </View>
         );
     }
