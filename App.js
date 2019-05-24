@@ -14,12 +14,16 @@ StatusBar.setHidden(true);
 const Main = require('./components/Main/Main');
 const Shop = require('./components/Main/Shop/Shop');
 const Authentication = require('./components/Authentication/Authentication');
+const ChangeInformation = require('./components/ChangeInformation/ChangeInformation');
+const OrderHistory = require('./components/OrderHistory/OrderHistory');
 
 const MainNavigator = createStackNavigator(
   {
     Main: { screen: Main },
     Shop: { screen: Shop },
-    Authentication: { screen: Authentication }
+    Authentication: { screen: Authentication },
+    ChangeInformation: { screen: ChangeInformation },
+    OrderHistory: { screen: OrderHistory }
   }, 
   // {
   //   navigationOptions: () => ({

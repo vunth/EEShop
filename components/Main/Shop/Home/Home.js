@@ -14,16 +14,16 @@ class Home extends React.Component {
         title: 'Home Screen',
     };
     render() {
-        const { navigate } = this.props.navigation;
+        // const { navigate } = this.props.navigation;
         return (
         <View style={styles.container}>
             <Text style={styles.welcome}>Welcome to Home component!</Text>
             <Text style={styles.instructions}>To get started, edit App.js</Text>
             <Text style={styles.instructions}>{instructions}</Text>
-            <Button
+            {/* <Button
                 title="Go to Authentication Screen"
                 onPress={() => navigate('Authentication', { name: 'Hoang Vu' })}
-            />
+            /> */}
         </View>
         );
     }
@@ -35,7 +35,7 @@ module.exports = Home;
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: '#ffd52e',
     },
     welcome: {
       fontSize: 20,
