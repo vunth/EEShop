@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Home from './Home/Home';
 import Cart from './Cart/Cart';
 import Search from './Search/Search';
 import Contact from './Contact/Contact';
+import Header from './Header';
 
-const { height } = Dimensions.get('window');
 class Shop extends React.Component {
     constructor(props) {
         super(props);
@@ -17,7 +17,7 @@ class Shop extends React.Component {
         open();
     }
     render() {
-        const { open } = this.props;
+        // const { open } = this.props;
         return (
             // <View style={styles.container}>
             //     <Text style={styles.welcome}>Welcome to Shop component!</Text>
@@ -30,15 +30,7 @@ class Shop extends React.Component {
             // </TouchableOpacity>
             // </View>
             <View style={styles.container}>
-                <View style={styles.topView}>
-                    <TouchableOpacity onPress={this.openMenu.bind(this)}>
-                        <Text>Open Menu By Touchable</Text>
-                    </TouchableOpacity>
-                    <Button
-                        title="Open Menu"
-                        onPress={() => open()}
-                    />
-                </View>
+                <Header onOpen={this.openMenu.bind(this)} />
                 <TabNavigator>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'home'}
@@ -92,9 +84,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F5FCFF',
-    },
-    topView: {
-        height: height / 8
     },
     welcome: {
         fontSize: 20,
