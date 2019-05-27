@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import Collection from './Collection';
 import Category from './Category';
+import TopProduct from './TopProduct';
 
 class Home extends React.Component {
     static navigationOptions = {
@@ -9,10 +10,11 @@ class Home extends React.Component {
     };
     render() {
         return (
-        <View style={styles.container}>
-            <Collection />
-            <Category />
-        </View>
+        <ScrollView style={styles.container}>
+            {/* <Collection />
+            <Category /> */}
+            <TopProduct />
+        </ScrollView>
         );
     }
 }
@@ -20,9 +22,7 @@ class Home extends React.Component {
 module.exports = Home;
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    flex: 1,
     backgroundColor: '#DBDBD8',
   },
   welcome: {
