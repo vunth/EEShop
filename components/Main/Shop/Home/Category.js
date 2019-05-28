@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     textContainerStyle: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#9A9A9A',
+        // backgroundColor: '#9A9A9A',
     },
     textStyle: {
         fontSize: 20,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     swiperContainerStyle: {
         flex: 4,
         justifyContent: 'flex-end',
-        backgroundColor: '#b07774',
+        // backgroundColor: '#b07774',
     },
     imageStyle: {
         width: imageWidth,

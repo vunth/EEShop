@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     textContainerStyle: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#b07774',
+        // backgroundColor: '#b07774',
     },
     textStyle: {
         fontSize: 20,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     imageContainerStyle: {
         flex: 4,
-        backgroundColor: '#2E272B',
+        // backgroundColor: '#2E272B',
         justifyContent: 'center'
     },
     imageStyle: {

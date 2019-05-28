@@ -11,8 +11,8 @@ class Home extends React.Component {
     render() {
         return (
         <ScrollView style={styles.container}>
-            {/* <Collection />
-            <Category /> */}
+            <Collection />
+            <Category />
             <TopProduct />
         </ScrollView>
         );

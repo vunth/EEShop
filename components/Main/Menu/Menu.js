@@ -1,18 +1,15 @@
 import React from 'react';
-import { StyleSheet, Platform, Text, View, TouchableOpacity, Button } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import profileIcon from '../../../media/temp/profile.png';
 
 class Menu extends React.Component {
   static navigationOptions = {
     title: 'Menu Screen',
   };
+  constructor(props) {
+    super(props);
+    this.state = { isSigned: false };
+  }
   gotoAuthentication() {
     const { navigate } = this.props;
     navigate('Authentication', { name: 'Hoang Vu' });
@@ -25,32 +22,50 @@ class Menu extends React.Component {
     const { navigate } = this.props;
     navigate('OrderHistory', { name: 'Hoang Vu' });
   }
+  signOut() {
+    
+  }
   render() {
-    const { navigate } = this.props;
+    // const { navigate } = this.props;
+    const {
+      profileIconStyle, signOutStateContainer, signedInStateContainer,
+      button, signedInButton, textButton, textSignedInButton, usernameText
+    } = styles;
+    const signOutJSX = (
+      <View style={signOutStateContainer}>
+        <TouchableOpacity style={button} onPress={this.gotoAuthentication.bind(this)}>
+          <Text style={textButton}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+    );
+    const signedInJSX = (
+      <View style={signedInStateContainer}>
+          <View style={{ flex: 1 }}>
+            <Text style={usernameText}>Nguyen Tan Hoang Vu</Text>
+          </View>
+          <View style={{ flex: 19, justifyContent: 'center' }}>
+            <TouchableOpacity style={signedInButton} onPress={this.gotoOrderHistory.bind(this)}>
+              <Text style={textSignedInButton}>Order History</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={signedInButton} onPress={this.gotoChangeInformation.bind(this)}>
+              <Text style={textSignedInButton}>Change Information</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={signedInButton} onPress={this.signOut.bind(this)}>
+              <Text style={textSignedInButton}>Sign Out</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+    );
+    const mainJSX = this.state.isSigned ? signedInJSX : signOutJSX; 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to Menu component!</Text>
-        <TouchableOpacity onPress={this.gotoAuthentication.bind(this)}>
-          <Text>Authentication</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.gotoChangeInformation.bind(this)}>
-          <Text>Change Information</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.gotoOrderHistory.bind(this)}>
-          <Text>Order history</Text>
-        </TouchableOpacity>
-        <Button
-          title="Open Authentication"
-          onPress={() => navigate('Authentication', { name: 'Hoang Vu' })}
-        />
-        <Button
-          title="Open Change Information"
-          onPress={() => navigate('Authentication', { name: 'Hoang Vu' })}
-        />
+        {/*
         <Button
           title="Open Order history"
           onPress={() => navigate('Authentication', { name: 'Hoang Vu' })}
-        />
+        /> */}
+        <Image source={profileIcon} style={profileIconStyle} />
+        { mainJSX }
       </View>
     );
   }
@@ -61,18 +76,55 @@ module.exports = Menu;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
+    backgroundColor: '#34B089',
+    borderRightWidth: 3,
+    borderColor: '#FFF',
     alignItems: 'center',
-    backgroundColor: '#ac5f55',
   },
-  welcome: {
+  profileIconStyle: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginVertical: 30,
+  },
+  usernameText: {
+    color: '#FFF', 
+    fontFamily: 'Avenir', 
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  signOutStateContainer: {
+    flex: 1,
+  },
+  signedInStateContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  button: {
+    height: 40,
+    paddingHorizontal: 70,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  textButton: {
+    color: '#34B089',
+    fontSize: 20,
+    fontFamily: 'Avenir', 
+  },
+  signedInButton: {
+    height: 40,
+    width: 200,
+    paddingLeft: 10,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  textSignedInButton: {
+    color: '#34B089',
+    fontSize: 15,
+    alignSelf: 'stretch',
   },
 });
