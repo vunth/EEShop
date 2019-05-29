@@ -31,7 +31,9 @@ const styles = StyleSheet.create({
     wrapper: {
         height: height / 8,
         backgroundColor: '#34B089',
-        padding: 10,
+        paddingHorizontal: 20,
+        paddingTop: 30,
+        paddingBottom: 5,
         justifyContent: 'space-around'
     },
     topLine: {

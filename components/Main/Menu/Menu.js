@@ -10,17 +10,18 @@ class Menu extends React.Component {
     super(props);
     this.state = { isSigned: false };
   }
+  
   gotoAuthentication() {
-    const { navigate } = this.props;
-    navigate('Authentication', { name: 'Hoang Vu' });
+    const { navigation } = this.props;
+    navigation.navigate('Authentication', { name: 'Hoang Vu' });
   }
   gotoChangeInformation() {
-    const { navigate } = this.props;
-    navigate('ChangeInformation', { name: 'Hoang Vu' });
+    const { navigation } = this.props;
+    navigation.navigate('ChangeInformation', { name: 'Hoang Vu' });
   }
   gotoOrderHistory() {
-    const { navigate } = this.props;
-    navigate('OrderHistory', { name: 'Hoang Vu' });
+    const { navigation } = this.props;
+    navigation.navigate('OrderHistory', { name: 'Hoang Vu' });
   }
   signOut() {
     
@@ -47,7 +48,10 @@ class Menu extends React.Component {
             <TouchableOpacity style={signedInButton} onPress={this.gotoOrderHistory.bind(this)}>
               <Text style={textSignedInButton}>Order History</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={signedInButton} onPress={this.gotoChangeInformation.bind(this)}>
+            <TouchableOpacity 
+              style={signedInButton} 
+              onPress={this.gotoChangeInformation.bind(this)}
+            >
               <Text style={textSignedInButton}>Change Information</Text>
             </TouchableOpacity>
             <TouchableOpacity style={signedInButton} onPress={this.signOut.bind(this)}>
@@ -59,11 +63,6 @@ class Menu extends React.Component {
     const mainJSX = this.state.isSigned ? signedInJSX : signOutJSX; 
     return (
       <View style={styles.container}>
-        {/*
-        <Button
-          title="Open Order history"
-          onPress={() => navigate('Authentication', { name: 'Hoang Vu' })}
-        /> */}
         <Image source={profileIcon} style={profileIconStyle} />
         { mainJSX }
       </View>

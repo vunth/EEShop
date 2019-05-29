@@ -1,13 +1,10 @@
+
 import React from 'react';
 import Drawer from 'react-native-drawer';
 import Menu from './Menu/Menu';
 import Shop from './Shop/Shop';
 
 class Main extends React.Component {
-    static navigationOptions = {
-        title: 'Main Screen',
-    };
-
     closeControlPanel = () => {
       this.drawer.close();
     };
@@ -16,16 +13,16 @@ class Main extends React.Component {
     };
 
     render() {
-        const { navigate } = this.props.navigation;
+        const { navigation } = this.props;
         return (
-        <Drawer
-          ref={(ref) => { this.drawer = ref; }}
-          content={<Menu navigate={navigate} />}
-          openDrawerOffset={0.4}
-          tapToClose
-        >
-          <Shop open={this.openControlPanel.bind(this)} />
-        </Drawer>
+          <Drawer
+            ref={(ref) => { this.drawer = ref; }}
+            content={<Menu navigation={navigation} />}
+            openDrawerOffset={0.4}
+            tapToClose
+          >
+            <Shop open={this.openControlPanel.bind(this)} />
+          </Drawer>
         );
     }
 }
